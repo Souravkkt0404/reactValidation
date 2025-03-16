@@ -17,17 +17,19 @@ const Registration = () => {
       initialValues,
       validationSchema: signUpSchema,
       onSubmit: (values, action) => {
-        console.log(
-          "🚀 ~ file: Registration.jsx ~ line 11 ~ Registration ~ values",
-          values
-        );
+        console.log("Form Data:", values);
+
+        // Save data to localStorage
+        sessionStorage.setItem("userData", JSON.stringify(values));
+
+        alert("Registration Successful! Data saved to localStorage.");
+
         action.resetForm();
       },
     });
-  // console.log(
-  //   "🚀 ~ file: Registration.jsx ~ line 25 ~ Registration ~ errors",
-  //   errors
-  // );
+
+  const savedData = JSON.parse(sessionStorage.getItem("userData"));
+  console.log(savedData);
 
   return (
     <>
